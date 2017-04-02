@@ -1,0 +1,703 @@
+
+<!DOCTYPE html>
+
+<html ng-app="SupportPortal" text-direction ng-controller="PageController" lang="{{locale}}" xml:lang="{{locale}}">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="ms.refView" content="" />
+    <meta name="ms.pageType" content="" />
+    <meta name="ms.Nav1" content="" />
+    <meta name="ms.auth" content="" />
+    <meta name="ms.ssversion" content="200" />
+    <meta name="ms.flightId" content="" />
+    <meta name="ms.partnerId" content="" />
+    <meta name="ms.cV" content="" />
+    <meta name="ms.muid" content="" />
+    <meta name="msvalidate.01" content="B79672A77B167E030BC40D0D0A4D372A" />
+    <meta name="robots" content="noindex, nofollow" ng-if="noIndex" />
+    <meta ng-repeat="metaTag in metaTags" name="{{metaTag.name}}" content="{{metaTag.content}}" />
+    <base href="/" />
+
+            <script src="https://cdn.optimizely.com/js/7962161087.js"></script>
+
+
+    <script type="text/javascript">
+        var supportWindowsHistory = !!(window.history && window.history.pushState);
+        // In downgraded browsers we need to use the hash in order to reach the angular routes
+        if (!supportWindowsHistory) {
+            if (window.location.hash.charAt(1) !== "!") {
+                var baseHref = document.getElementsByTagName('base')[0].href;
+                var hashRoute = location.href.replace(baseHref, "").replace(location.hash, "");
+                window.location.replace(window.location.pathname + '#!' + hashRoute + window.location.search + window.location.hash);
+            }
+        }
+    </script>
+    <title ng-bind="title"></title>
+
+    <link href="//www.microsoft.com/favicon.ico?v2" rel="shortcut icon">
+    <link rel="canonical" ng-href="{{canonicalUrl}}" />
+    <link rel="alternate" hreflang="{{lang.locale}}" ng-href="{{canonicalUrl.replace(locale, lang.locale)}}" ng-repeat="lang in languages" />
+
+    <link rel="stylesheet" type="text/css" href="https://assets.onestore.ms/cdnfiles/external/webcore/4.16.0/stylesheets/WebCore.4.16.0.ltr.light.min.css" />
+    <link href="/bundles/css?v=EGOPRLVip-7HnmOw90CwWZCG5xuPxKvujcRaSVsHU0A1" rel="stylesheet"/>
+
+
+
+
+    <link href="/bundles/print?v=hXL0y6-R0CD68GMcxQRjdH6yaBuWEjj4ysR3flsEvoI1" rel="stylesheet" type="text/css" media="print" />
+
+<link rel="stylesheet" href="https://assets.onestore.ms/cdnfiles/external/mwf/long/v1/v1.20.0/css/uhf-west-european-default.min.css" type="text/css" media="all" />    <!--[if lt IE 9]>
+            <link href="/bundles/ie8?v=NaqsDACovXQRo_hqR6iUPF_YiAg2YvoiDDL6mXfyslM1" rel="stylesheet"/>
+
+    <![endif]-->
+    <!-- assembly version 1.0.17087.2, built on 3/30/2017 12:59:39 PM -->
+</head>
+<body ng-class="{ 'mobile' : isMobile, 'desktop': !isMoble }">
+    
+<!-- Style for error content in the case that css + js files fail to download -->
+<style type="text/css">
+    .ng-hide .error-content {
+        display: none;
+        text-align: center;
+        font-family: 'Segoe UI';
+        padding-bottom: 12px;
+    }
+
+    .error-content h2 {
+        margin-top: 8px;
+        margin-bottom: 24px;
+        color: black;
+    }
+</style>
+
+<!-- Downloads theMicrosoft.Support.Portal.Config object from the server -->
+<script type="text/javascript" src="/api/clientconfig"></script>
+
+<!--“Third party scripts or code, linked to, called or referenced from this web site, online service or product, are licensed to you by the third parties that own such code, not by Microsoft, see ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx.”-->
+<script src="/bundles/jquery?v=o6MgdIASviybV7bcU6AaRqYrOA0UB760vAz5vjSUKuY1"></script>
+
+<script src="/bundles/jslibraries?v=z4wCewY7OI9N_dK-VjeKh6eMgmjIjAiyIUj1P4C3GcQ1"></script>
+
+<script src="/bundles/application?v=ZWEPO95ziEOie11TKoYMpOdbdum93WIArBS5DE4IvHE1"></script>
+
+<script src="/bundles/bootstrap?v=Mq4Q_Dx-1LLYO7TzEb5esZVZo8-XncaVfkndSDy3DhM1"></script>
+
+
+
+<script type="text/javascript">
+    if (!window.angular) {
+        document.onreadystatechange = function () {
+            if (document.readyState == "complete") {
+                document.getElementById('error500').style.display = "block";
+            }
+        }
+    }
+</script>
+
+    <iframe id='silent-signin-frame' ng-src='/api/content/silentauth' tabindex="-1" aria-hidden="true"></iframe>
+    <div ng-if="!online" ng-cloak>
+        <div class="online-detect" ng-controller="OnlineController">
+            <div class="text-body">
+                {{offlineMessage}}
+            </div>
+        </div>
+    </div>
+
+
+    <div id="alert-banner" class="alert-banner" ng-if="alertBanner" ng-cloak>
+        <div class="text-base" ng-bind-html="alertBanner | compassFormat : {'link' : alertBannerLink, 'link2' : alertBannerLink2 }"></div>
+    </div>
+    
+
+
+
+
+
+<script src="https://assets.onestore.ms/cdnfiles/external/uhf/long/e57c48384738b33a75b1d1300263f35dff32e028/js/uhf-main.var.min.js"></script><script src="https://mem.gfx.ms/meversion?partner=smc&market=en-in"></script>
+    <!--Angular 1.2 does not certain locale, so we map to a locale that angular support until we upgrade to a higher version -->
+
+    <script src="/Scripts/Lib/i18n/angular-locale_en-in.js?v=1.0.17087.2"></script>
+
+    <div role="navigation" ng-if="!noChrome" ng-cloak>
+            <div ng-controller="L0HeaderController"></div>
+    <section id="headerArea"  data-m='{"cN":"headerArea","cT":"Area_coreuiArea","id":"a1Body","sN":1,"aN":"Body"}'>
+                    <div id="headerRegion"     data-region-key="headerregion" data-m='{"cN":"headerRegion","cT":"Region_coreui-region","id":"r1a1","sN":1,"aN":"a1"}'>
+
+        <div  id="headerUniversalHeader" data-m='{"cN":"headerUniversalHeader","cT":"Module_coreui-universalheader","id":"m1r1a1","sN":1,"aN":"r1a1"}'  data-module-id="Category|headerRegion|headerRegion|headerUniversalHeader|coreui-universalheader">
+            
+
+
+
+    <div id="epb" class="x-hidden x-hidden-vp1 x-hidden-vp2 uhfc-universal-context context-uhf" ms.cmpgrp='epb' >
+
+<div class="m-alert f-information" role="alert">
+            <button class="c-action-trigger c-glyph glyph-cancel"
+                aria-label="no thanks"
+                data-m='{"cN":"No thanks","id":"nn1m1r1a1","sN":1,"aN":"m1r1a1"}'
+                ></button>
+
+    <div>
+            <div class="c-glyph glyph-info" aria-label="Try Microsoft Edge, a fast and secure browser that&#39;s designed for Windows 10"></div>
+        
+        <p class="c-paragraph">
+            Try Microsoft Edge, a fast and secure browser that&#39;s designed for Windows 10
+                    <span class="c-group">
+        <a role="button" class="c-action-trigger" id="epbTryNow" href="#"
+           aria-label="try microsoft edge, a fast and secure browser that&#39;s designed for windows 10"
+           data-m='{"cN":"Go Now","id":"n2m1r1a1","sN":2,"aN":"m1r1a1"}'>Get started</a>
+        </span>
+
+        </p>
+    </div>
+</div>
+
+    </div>
+    <style>
+        #epb .m-alert {margin-top: 0 }
+        
+        #epb .m-alert {margin-top: 0 }
+
+        @media (min-width: 768px) and (max-width:1084px) {
+            #epb  .m-alert[role="alert"] > div{
+                width: 98%;
+                margin: 0 auto; } }
+
+        @media (min-width: 1084px) {
+            #epb  .m-alert[role="alert"] > div{
+                width: 92%;
+                margin: 0 auto; } }
+    </style>
+    
+        <style>
+            #epb {animation:slidedown .5s ease-in; overflow:hidden;}
+            #epb.epb-rollup {animation:slideup .5s ease-in;}
+            @keyframes slideup {from {height:50px}to{height:0}}
+            @keyframes slidedown {from {height:0}to{height:54px}}
+        </style>
+    
+
+
+
+
+
+<header role="banner" class="c-universal-header context-uhf no-js " itemscope="itemscope" data-header-footprint="/smc/onesite-l0-header" itemtype="http://schema.org/Organization">
+    <div class="theme-light js-global-head f-closed " ms.pgarea='Universal Header'>
+        <div>
+            <button class="c-action-trigger c-glyph glyph-global-nav-button" aria-label="Toggle menu" aria-expanded="false" ms.title='Mobile menu button'></button>
+            <button class="c-action-trigger c-glyph glyph-arrow-htmllegacy" aria-expanded="false" ms.title='Close Search'></button>
+                    <a data-m='{"pid":"h:32f2fa12","id":"n3m1r1a1","sN":3,"aN":"m1r1a1"}' id="uhfLogo" class="c-logo" itemprop="url" href="https://www.microsoft.com" aria-label="Microsoft" ms.cmpgrp='logo'>
+                        <img itemprop="logo" itemscope="itemscope" class="c-image" alt="Microsoft" src="https://assets.onestore.ms/cdnfiles/external/uhf/long/9a49a7e9d8e881327e81b9eb43dabc01de70a9bb/images/microsoft-gray.png"/>
+                        <span>Microsoft</span>
+                    </a>
+            <div class="f-mobile-title">
+                <button class="c-action-trigger c-glyph glyph-chevron-left" aria-label="See more menu options" ms.title='Mobile back button'></button>
+                <span data-global-title="Microsoft home" class="js-mobile-title">Microsoft home</span>
+                <button class="c-action-trigger c-glyph glyph-chevron-right" aria-label="See more menu options" ms.title='Mobile forward button'></button>
+            </div>
+
+                    <nav id="uhf-g-nav" ms.cmpgrp='nav'>
+            <ul>
+                        <li>
+                            <div class="c-select-menu c-uhf-menu js-nav-menu">
+
+                                <button id="Store-navigation" aria-expanded="false" aria-haspopup="true" ms.title='Store' ms.interactiontype='14' style="white-space:nowrap">Store</button>
+                                <ul class="c-menu" aria-labelledby="Store-navigation" aria-hidden="true" ms.cmpnm='Store'>
+    <li class="c-menu-item" ms.cmpnm='StoreHome'>
+        <a id="shellmenu_1820448"  href="https://www.microsoftstore.com/store/msin/en_GB/home" ms.title='StoreHome'>Store home</a>
+        
+    </li>
+    <li class="c-menu-item f-sub-menu js-nav-menu" ms.cmpnm='Store_Devices'>
+
+        <button id="Devices-navigation"  aria-expanded="false" ms.title='Store_Devices' ms.interactiontype='14'>Devices</button>
+        <ul class="c-menu" aria-labelledby="Devices-navigation" aria-hidden="true" ms.cmpnm='Store_Devices'>
+    <li class="c-menu-item" ms.cmpnm='Devices_Surface'>
+        <a id="shellmenu_1820450"  href="https://www.microsoftstore.com/store/msin/en_GB/cat/Surface/categoryID.70697900" ms.title='Devices_Surface'>Microsoft Surface</a>
+        
+    </li>
+            
+        </ul>
+        
+    </li>
+    <li class="c-menu-item f-sub-menu js-nav-menu" ms.cmpnm='Store_Office'>
+
+        <button id="Office-navigation"  aria-expanded="false" ms.title='Store_Office' ms.interactiontype='14'>Office</button>
+        <ul class="c-menu" aria-labelledby="Office-navigation" aria-hidden="true" ms.cmpnm='Store_Office'>
+    <li class="c-menu-item" ms.cmpnm='Office_OfficeSuites'>
+        <a id="shellmenu_1820452"  href="https://www.microsoftstore.com/store/msin/en_GB/cat/Office/categoryID.66287300?icid=TopNavOffice" ms.title='Office_OfficeSuites'>Office suites</a>
+        
+    </li>
+    <li class="c-menu-item" ms.cmpnm='Store_Office_OfficeApps'>
+        <a id="shellmenu_1820453"  href="https://www.microsoftstore.com/store/msin/en_GB/list/Office-stand-alone-products/categoryID.66703200?icid=TopNavOfficeStandalone" ms.title='Store_Office_OfficeApps'>Office stand-alone products</a>
+        
+    </li>
+    <li class="c-menu-item" ms.cmpnm='Store_Office_OfficeForMac'>
+        <a id="shellmenu_1820454"  href="https://www.microsoftstore.com/store/msin/en_GB/cat/Office-for-Mac/categoryID.69950200?icid=TopNavOMAC" ms.title='Store_Office_OfficeForMac'>Office for Mac</a>
+        
+    </li>
+    <li class="c-menu-item" ms.cmpnm='Store_Office_Office365'>
+        <a id="shellmenu_1820455"  href="https://www.microsoftstore.com/store/msin/en_GB/cat/Office-365/categoryID.69950300?icid=TopNavOffice365" ms.title='Store_Office_Office365'>Office 365</a>
+        
+    </li>
+    <li class="c-menu-item" ms.cmpnm='Office_Office365Renewal'>
+        <a id="shellmenu_1820456"  href="https://www.microsoftstore.com/store/msin/en_GB/cat/Office-365-renewal/categoryID.69481500?icid=TopNavOffice365Renewal" ms.title='Office_Office365Renewal'>Office 365 renewal</a>
+        
+    </li>
+    <li class="c-menu-item" ms.cmpnm='Office_OfficeCompare'>
+        <a id="shellmenu_1820457"  href="https://www.microsoftstore.com/store/msin/en_GB/cat/categoryID.70185200?icid=TopNavCompareOffice" ms.title='Office_OfficeCompare'>Compare Office Suites</a>
+        
+    </li>
+    <li class="c-menu-item" ms.cmpnm='Office_OfficeLanguagePack'>
+        <a id="shellmenu_1820458"  href="https://www.microsoftstore.com/store/msin/en_GB/pdp/Office-Language-Pack-2013/productID.263644800?icid=TopNavOffLangPDP" ms.title='Office_OfficeLanguagePack'>Office Language Packs</a>
+        
+    </li>
+            
+        </ul>
+        
+    </li>
+    <li class="c-menu-item f-sub-menu js-nav-menu" ms.cmpnm='Store_Windows'>
+
+        <button id="Windows-navigation"  aria-expanded="false" ms.title='Store_Windows' ms.interactiontype='14'>Windows</button>
+        <ul class="c-menu" aria-labelledby="Windows-navigation" aria-hidden="true" ms.cmpnm='Store_Windows'>
+    <li class="c-menu-item" ms.cmpnm='Store_Windows_Windows10Home'>
+        <a id="shellmenu_1820460"  href="https://www.microsoftstore.com/store/msin/en_GB/pdp/productID.320463100?icid=CNavWindows10Home" ms.title='Store_Windows_Windows10Home'>Windows 10 Home</a>
+        
+    </li>
+    <li class="c-menu-item" ms.cmpnm='Store_Windows_WindowsPro'>
+        <a id="shellmenu_1820461"  href="https://www.microsoftstore.com/store/msin/en_GB/pdp/productID.320462600?icid=CNavWindows10Pro" ms.title='Store_Windows_WindowsPro'>Windows 10 Pro</a>
+        
+    </li>
+            
+        </ul>
+        
+    </li>
+    <li class="c-menu-item f-sub-menu js-nav-menu" ms.cmpnm='Store_AdditionalSoftware'>
+
+        <button id="AdditionalSoftware-navigation"  aria-expanded="false" ms.title='Store_AdditionalSoftware' ms.interactiontype='14'>Additional Software</button>
+        <ul class="c-menu" aria-labelledby="AdditionalSoftware-navigation" aria-hidden="true" ms.cmpnm='Store_AdditionalSoftware'>
+    <li class="c-menu-item" ms.cmpnm='Store_AdditionalSoftware_VisualStudio'>
+        <a id="shellmenu_1820463"  href="https://www.microsoftstore.com/store/msin/en_GB/list/Visual-Studio/categoryID.66298600" ms.title='Store_AdditionalSoftware_VisualStudio'>Visual Studio</a>
+        
+    </li>
+    <li class="c-menu-item" ms.cmpnm='additionalsoftware_windowsserver'>
+        <a id="shellmenu_1820464"  href="https://www.microsoftstore.com/store/msin/en_GB/list/Server-and-IT-Software/categoryID.4805853900" ms.title='additionalsoftware_windowsserver'>Windows Server</a>
+        
+    </li>
+            
+        </ul>
+        
+    </li>
+    <li class="c-menu-item f-sub-menu js-nav-menu" ms.cmpnm='Store_Apps'>
+
+        <button id="Apps-navigation"  aria-expanded="false" ms.title='Store_Apps' ms.interactiontype='14'>Apps</button>
+        <ul class="c-menu" aria-labelledby="Apps-navigation" aria-hidden="true" ms.cmpnm='Store_Apps'>
+    <li class="c-menu-item" ms.cmpnm='Store_AllApps'>
+        <a id="shellmenu_1820466"  href="https://www.microsoft.com/en-in/store/top-free/apps/pc" ms.title='Store_AllApps'>All apps</a>
+        
+    </li>
+    <li class="c-menu-item" ms.cmpnm='Store_Apps_Windowsapps'>
+        <a id="shellmenu_1820467"  href="https://www.microsoft.com/en-in/store/apps/windows" ms.title='Store_Apps_Windowsapps'>Windows apps</a>
+        
+    </li>
+    <li class="c-menu-item" ms.cmpnm='Store_Apps_WindowsPhoneapps'>
+        <a id="shellmenu_1820468"  href="https://www.microsoft.com/en-in/store/apps/windows-phone" ms.title='Store_Apps_WindowsPhoneapps'>Windows Phone apps</a>
+        
+    </li>
+    <li class="c-menu-item" ms.cmpnm='Store_XboxApps'>
+        <a id="shellmenu_1820469"  href="https://www.xbox.com/en-IN/entertainment/xbox-one/live-apps" ms.title='Store_XboxApps'>Xbox apps</a>
+        
+    </li>
+            
+        </ul>
+        
+    </li>
+    <li class="c-menu-item f-sub-menu js-nav-menu" ms.cmpnm='Store_Games'>
+
+        <button id="Games-navigation"  aria-expanded="false" ms.title='Store_Games' ms.interactiontype='14'>Games</button>
+        <ul class="c-menu" aria-labelledby="Games-navigation" aria-hidden="true" ms.cmpnm='Store_Games'>
+    <li class="c-menu-item" ms.cmpnm='Games_XboxGamesDownload'>
+        <a id="shellmenu_1820471"  href="https://www.microsoft.com/en-IN/store/top-paid/games/xbox" ms.title='Games_XboxGamesDownload'>Xbox Games (download)&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </a>
+        
+    </li>
+    <li class="c-menu-item" ms.cmpnm='Store_AllGames'>
+        <a id="shellmenu_1820472"  href="https://www.microsoft.com/en-in/store/games" ms.title='Store_AllGames'>All games</a>
+        
+    </li>
+    <li class="c-menu-item" ms.cmpnm='Store_Games_Windowsgames'>
+        <a id="shellmenu_1820473"  href="https://www.microsoft.com/en-in/store/games/windows" ms.title='Store_Games_Windowsgames'>Windows games </a>
+        
+    </li>
+    <li class="c-menu-item" ms.cmpnm='Store_Games_WindowsPhonegames'>
+        <a id="shellmenu_1820474"  href="https://www.microsoft.com/en-in/store/games/windows-phone" ms.title='Store_Games_WindowsPhonegames'>Games for Windows Phone</a>
+        
+    </li>
+            
+        </ul>
+        
+    </li>
+                                    
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="c-select-menu c-uhf-menu js-nav-menu">
+
+                                <button id="Products-navigation" aria-expanded="false" aria-haspopup="true" ms.title='Products' ms.interactiontype='14' style="white-space:nowrap">Products</button>
+                                <ul class="c-menu" aria-labelledby="Products-navigation" aria-hidden="true" ms.cmpnm='Products'>
+    <li class="c-menu-item f-sub-menu js-nav-menu" ms.cmpnm='Products_SoftwareAndServices'>
+
+        <button id="Software&amp;services-navigation"  aria-expanded="false" ms.title='Products_SoftwareAndServices' ms.interactiontype='14'>Software &amp; services</button>
+        <ul class="c-menu" aria-labelledby="Software&amp;services-navigation" aria-hidden="true" ms.cmpnm='Products_SoftwareAndServices'>
+    <li class="c-menu-item" ms.cmpnm='Products_SoftwareAndServices_Windows'>
+        <a id="shellmenu_1820477"  href="https://www.microsoft.com/en-in/windows" ms.title='Products_SoftwareAndServices_Windows'>Windows</a>
+        
+    </li>
+    <li class="c-menu-item" ms.cmpnm='Products_SoftwareAndServices_Office'>
+        <a id="shellmenu_1820478"  href="https://products.office.com/en-in/home?WT.mc_id=oan_winnav_office" ms.title='Products_SoftwareAndServices_Office'>Office</a>
+        
+    </li>
+    <li class="c-menu-item" ms.cmpnm='Products_SoftwareAndServices_FreeDownloadsAndSecurity'>
+        <a id="shellmenu_1820479"  href="https://www.microsoft.com/en-in/download/default.aspx" ms.title='Products_SoftwareAndServices_FreeDownloadsAndSecurity'>Free downloads &amp; security</a>
+        
+    </li>
+    <li class="c-menu-item" ms.cmpnm='Products_SoftwareAndServices_InternetExplorer'>
+        <a id="shellmenu_1820480"  href="https://support.microsoft.com/en-in/help/17621/internet-explorer-downloads" ms.title='Products_SoftwareAndServices_InternetExplorer'>Internet Explorer</a>
+        
+    </li>
+    <li class="c-menu-item" ms.cmpnm='Products_SoftwareAndServices_MicrosoftEdge'>
+        <a id="shellmenu_1820481"  href="https://www.microsoft.com/en-in/windows/microsoft-edge" ms.title='Products_SoftwareAndServices_MicrosoftEdge'>Microsoft Edge</a>
+        
+    </li>
+    <li class="c-menu-item" ms.cmpnm='Products_SoftwareAndServices_MSN'>
+        <a id="shellmenu_1820482"  href="https://www.msn.com/?ocid=HEA000" ms.title='Products_SoftwareAndServices_MSN'>MSN</a>
+        
+    </li>
+            
+        </ul>
+        
+    </li>
+    <li class="c-menu-item f-sub-menu js-nav-menu" ms.cmpnm='Products_DevicesAndXbox'>
+
+        <button id="Devices&amp;Xbox-navigation"  aria-expanded="false" ms.title='Products_DevicesAndXbox' ms.interactiontype='14'>Devices &amp; Xbox</button>
+        <ul class="c-menu" aria-labelledby="Devices&amp;Xbox-navigation" aria-hidden="true" ms.cmpnm='Products_DevicesAndXbox'>
+    <li class="c-menu-item" ms.cmpnm='Products_DevicesAndXbox_AllPCsAndTablets'>
+        <a id="shellmenu_1820484"  href="https://www.microsoft.com/en-in/windows/view-all" ms.title='Products_DevicesAndXbox_AllPCsAndTablets'>All Windows PCs &amp; tablets</a>
+        
+    </li>
+    <li class="c-menu-item" ms.cmpnm='Products_PCAccessories'>
+        <a id="shellmenu_1820485"  href="https://www.microsoft.com/hardware/en-in" ms.title='Products_PCAccessories'>PC Accessories</a>
+        
+    </li>
+    <li class="c-menu-item" ms.cmpnm='Products_DevicesAndXbox_XboxAndGames'>
+        <a id="shellmenu_1820486"  href="https://www.xbox.com/en-in/" ms.title='Products_DevicesAndXbox_XboxAndGames'>Xbox &amp; games</a>
+        
+    </li>
+    <li class="c-menu-item" ms.cmpnm='Products_MicrosoftLumia'>
+        <a id="shellmenu_1820487"  href="https://www.microsoft.com/en-in/mobile/" ms.title='Products_MicrosoftLumia'>Microsoft Lumia</a>
+        
+    </li>
+            
+        </ul>
+        
+    </li>
+    <li class="c-menu-item f-sub-menu js-nav-menu" ms.cmpnm='Products_ForBusiness'>
+
+        <button id="Forbusiness-navigation"  aria-expanded="false" ms.title='Products_ForBusiness' ms.interactiontype='14'>For business</button>
+        <ul class="c-menu" aria-labelledby="Forbusiness-navigation" aria-hidden="true" ms.cmpnm='Products_ForBusiness'>
+    <li class="c-menu-item" ms.cmpnm='Products_ForBusiness_CloudPlatform'>
+        <a id="shellmenu_1820489"  href="https://www.microsoft.com/en-in/server-cloud/" ms.title='Products_ForBusiness_CloudPlatform'>Cloud platform</a>
+        
+    </li>
+    <li class="c-menu-item" ms.cmpnm='Products_ForBusiness_MicrosoftAzure'>
+        <a id="shellmenu_1820490"  href="https://azure.microsoft.com/en-in" ms.title='Products_ForBusiness_MicrosoftAzure'>Microsoft Azure</a>
+        
+    </li>
+    <li class="c-menu-item" ms.cmpnm='Products_ForBusiness_MicrosoftDynamics'>
+        <a id="shellmenu_1820491"  href="https://www.microsoft.com/en-in/dynamics365/home" ms.title='Products_ForBusiness_MicrosoftDynamics'>Microsoft Dynamics 365</a>
+        
+    </li>
+    <li class="c-menu-item" ms.cmpnm='Products_ForBusiness_WindowsForBusiness'>
+        <a id="shellmenu_1820492"  href="https://www.microsoft.com/en-in/windows/business/default.aspx" ms.title='Products_ForBusiness_WindowsForBusiness'>Windows for business</a>
+        
+    </li>
+    <li class="c-menu-item" ms.cmpnm='Products_ForBusiness_OfficeForBusiness'>
+        <a id="shellmenu_1820493"  href="https://products.office.com/en-in/business/office?WT.mc_id=oan_winnav_officebusn" ms.title='Products_ForBusiness_OfficeForBusiness'>Office for Business</a>
+        
+    </li>
+    <li class="c-menu-item" ms.cmpnm='Products_ForBusiness_SkypeForBusiness'>
+        <a id="shellmenu_1820494"  href="https://www.skype.com/en/business/" ms.title='Products_ForBusiness_SkypeForBusiness'>Skype for Business</a>
+        
+    </li>
+    <li class="c-menu-item" ms.cmpnm='Products_ForBusiness_EnterpriseSolutions'>
+        <a id="shellmenu_1820495"  href="https://enterprise.microsoft.com/en-in/" ms.title='Products_ForBusiness_EnterpriseSolutions'>Enterprise solutions</a>
+        
+    </li>
+    <li class="c-menu-item" ms.cmpnm='Products_ForBusiness_SmallBusinessSolutions'>
+        <a id="shellmenu_1820496"  href="https://business.microsoft.com/en-in" ms.title='Products_ForBusiness_SmallBusinessSolutions'>Small business solutions</a>
+        
+    </li>
+    <li class="c-menu-item" ms.cmpnm='Products_ForBusiness_FindASolutionsProvider'>
+        <a id="shellmenu_1820497"  href="https://pinpoint.microsoft.com/en-in" ms.title='Products_ForBusiness_FindASolutionsProvider'>Find a solutions provider</a>
+        
+    </li>
+    <li class="c-menu-item" ms.cmpnm='Products_ForBusiness_VolumeLicensing'>
+        <a id="shellmenu_1820498"  href="https://www.microsoft.com/en-in/licensing/" ms.title='Products_ForBusiness_VolumeLicensing'>Volume Licensing</a>
+        
+    </li>
+            
+        </ul>
+        
+    </li>
+    <li class="c-menu-item f-sub-menu js-nav-menu" ms.cmpnm='Products_ForDevelopersAndITPros'>
+
+        <button id="Fordevelopers&amp;ITpros-navigation"  aria-expanded="false" ms.title='Products_ForDevelopersAndITPros' ms.interactiontype='14'>For developers &amp; IT pros</button>
+        <ul class="c-menu" aria-labelledby="Fordevelopers&amp;ITpros-navigation" aria-hidden="true" ms.cmpnm='Products_ForDevelopersAndITPros'>
+    <li class="c-menu-item" ms.cmpnm='Products_ForDevelopersAndITPros_Azure'>
+        <a id="shellmenu_1820500"  href="https://azure.microsoft.com/en-in" ms.title='Products_ForDevelopersAndITPros_Azure'>Microsoft Azure</a>
+        
+    </li>
+    <li class="c-menu-item" ms.cmpnm='Products_ForDevelopersAndITPros'>
+        <a id="shellmenu_1820501"  href="https://msdn.microsoft.com/en-in/dn308572" ms.title='Products_ForDevelopersAndITPros'>MSDN</a>
+        
+    </li>
+    <li class="c-menu-item" ms.cmpnm='Products_ForDevelopersAndITPros_TechNet'>
+        <a id="shellmenu_1820502"  href="https://technet.microsoft.com/en-in" ms.title='Products_ForDevelopersAndITPros_TechNet'>TechNet</a>
+        
+    </li>
+    <li class="c-menu-item" ms.cmpnm='Products_ForDevelopersAndITPros_VisualStudio'>
+        <a id="shellmenu_1820503"  href="https://www.visualstudio.com/" ms.title='Products_ForDevelopersAndITPros_VisualStudio'>Visual Studio</a>
+        
+    </li>
+            
+        </ul>
+        
+    </li>
+    <li class="c-menu-item f-sub-menu js-nav-menu" ms.cmpnm='Products_ForStudentsAndEducators'>
+
+        <button id="Forstudents&amp;educators-navigation"  aria-expanded="false" ms.title='Products_ForStudentsAndEducators' ms.interactiontype='14'>For students &amp; educators</button>
+        <ul class="c-menu" aria-labelledby="Forstudents&amp;educators-navigation" aria-hidden="true" ms.cmpnm='Products_ForStudentsAndEducators'>
+    <li class="c-menu-item" ms.cmpnm='Products_ForStudentsAndEducators_OfficeForStudents'>
+        <a id="shellmenu_1820505"  href="https://www.microsoft.com/en-in/education/products/office/default.aspx?WT.mc_id=oan_winnav_officestdnt" ms.title='Products_ForStudentsAndEducators_OfficeForStudents'>Office for students</a>
+        
+    </li>
+    <li class="c-menu-item" ms.cmpnm='Products_ForStudentsAndEducators_OneNoteInClassroom'>
+        <a id="shellmenu_1820506"  href="https://www.microsoft.com/en-in/education/products/onenote/default.aspx?WT.mc_id=oan_winnav_onenoteclassrm" ms.title='Products_ForStudentsAndEducators_OneNoteInClassroom'>OneNote in classroom</a>
+        
+    </li>
+    <li class="c-menu-item" ms.cmpnm='Products_ForStudentsAndEducators_MicrosoftInEducation'>
+        <a id="shellmenu_1820507"  href="https://www.microsoft.com/en-in/education/default.aspx" ms.title='Products_ForStudentsAndEducators_MicrosoftInEducation'>Microsoft in Education</a>
+        
+    </li>
+            
+        </ul>
+        
+    </li>
+                                    
+                                </ul>
+                            </div>
+                        </li>
+                    <li>
+                        <a id="l1_support" class="c-hyperlink c-uhf-nav-link" href="https://support.microsoft.com/en-in" ms.title='Support'>Support</a>
+                    </li>
+            </ul>
+            
+        </nav>
+
+
+                <div ms.cmpgrp='Header actions'>
+                    
+                            <a class="c-action-trigger c-glyph glyph-shopping-cart"
+            href="//www.microsoftstore.com/store/msin/en_GB/DisplayThreePgCheckoutShoppingCartPage"
+            ms.title='Shopping cart'>
+            <span class="shopping-cart-amount">0</span>
+            <span class="x-screen-reader">&nbsp;items in cart</span>
+        </a>
+                <iframe id="shell-cart-count" data-src="//www.microsoftstore.com/store/msin/en_GB/Content/pbPage.CartSummary" style="display: none"></iframe>
+
+                    
+                            <div id="meControl" class="c-me" data-signinsettings='{"containerId":"meControl","enabled":true,"headerHeight":50,"debug":false,"extensibleLinks":[],"userData":{"idp":"msa","firstName":"","lastName":"","memberName":"","cid":"","authenticatedState":"3"},"rpData":{"preferredIdp":"msa","msaInfo":{"signInUrl":"SMC-Sign-In-URL","signOutUrl":"SMC-Sign-Out-URL","meUrl":"https://login.live.com/me.srf?wa=wsignin1.0"},"aadInfo":{"signOutUrl":"SMC-Sign-Out-URL","appId":null,"siteUrl":null,"blockMsaFed":true}}}' ms.cmpgrp='Me Control'>
+            <div class="msame_Header">
+                <div class="msame_Header_name">Sign in</div>
+            </div>
+        
+        </div>
+            
+            <style>
+                .msame_Header{border:1px solid transparent;border-bottom-style:none;display:inline-block;font-size:14px;height:50px;min-width:100px;width:100%}
+                .msame_Header_name{color:#505050;display:inline-block;font-size:86%;line-height:50px;max-width:160px;overflow:hidden;text-overflow:ellipsis;vertical-align:top;white-space:nowrap}
+            </style>
+            
+
+
+                    
+                </div>
+        </div>
+        
+        
+    </div>
+    
+    
+</header>
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+            </div>
+
+    </section>
+    </div>
+
+    
+    <div comscore></div>
+    <main role="main">
+        <div ng-if="!noChrome && !hideSearch">
+            <div ng-include="'/PartialViews/Search/SearchContainer.html'"></div>
+
+            
+            <virtual-agent-entry ng-if="hasSkylightEntry && !noChrome"
+                                 data-view="skylightEntryView"
+                                 data-name="{{ entryName }}"
+                                 data-flow="{{ calculateEntryFlow() }}"
+                                 data-message-delay="isMobile ? '' : 2000"
+                                 data-message-duration="isMobile ? '' : 10000"
+                                 data-on-seen="onEntrySeen(name)"
+                                 data-on-clicked="onEntryClicked()">
+            </virtual-agent-entry>
+        </div>
+
+        <div ng-if="isDefaultPremier" ng-class='{"isDefaultPremier":commercial-hub}' ng-include="'/PartialViews/Commercial/CommercialHub.html'"></div>
+
+    <noscript>
+        <div class="error-content text-center">
+            <div><span class="win-icon warning-symbol win-icon-EmojiNeutral"></span></div>
+            <h2> Javascript is disabled </h2>
+            <p> Please enable javascript and refresh the page </p>
+        </div>
+    </noscript>
+    <div class="ng-hide" ng-show="errorStatus" ng-if="errorStatus" ng-switch on="errorStatus">
+        <div ng-switch-when="500" id="error500" class="error-content text-center">
+            <div><span class="win-icon warning-symbol win-icon-EmojiNeutral"></span></div>
+            <h2 ng-bind="(errorContent && errorContent.header) ? errorContent.header : 'An error occurred'"></h2>
+            <p ng-bind="(errorContent && errorContent.caption) ? errorContent.caption : 'Please try your request again later '"></p>
+        </div>
+        <div ng-switch-when="404" class="error-content text-center">
+            <div><span class="win-icon warning-symbol win-icon-EmojiNeutral"></span></div>
+            <h2 ng-bind="(errorContent && errorContent.header) ? errorContent.header : 'Try searching for what you need'"></h2>
+            <p ng-bind="(errorContent && errorContent.caption) ? errorContent.caption : 'This page doesn’t exist.'"></p>
+        </div>
+        <div ng-switch-when="cookies" class="error-content text-center">
+            <div><span class="win-icon warning-symbol win-icon-EmojiNeutral"></span></div>
+            <h2> Cookies are disabled  </h2>
+            <p> Please enable cookies and refresh the page </p>
+        </div>
+    </div>
+    <div class="error-content text-center text-muted" ng-show="errorStatus">
+        <p ng-cloak>CV: {{ getCv() }}</p>
+    </div>
+
+
+        <div ng-class="{'container': !noChrome && !fluidContainer, 'container-fluid': fluidContainer}">
+            <div class="row">
+                <div class="col-xs-24">
+                    
+<div ng-view role="presentation" ng-show="!errorStatus" scroll-track>
+
+</div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div role="contentinfo" class="win-color-bg-10" ng-class="{ 'footer-padding': !isMobile && hasSkylightEntry }" ng-if="!noChrome" ng-cloak>
+        <div ng-include="'/PartialViews/Common/F1Footer.html'"></div>
+        <div ng-include="'/PartialViews/Common/Locale.html'"></div>
+
+    <section id="footerArea"  data-m='{"cN":"footerArea","cT":"Area_coreuiArea","id":"a2Body","sN":2,"aN":"Body"}'>
+                    <div id="footerRegion"     data-region-key="footerregion" data-m='{"cN":"footerRegion","cT":"Region_coreui-region","id":"r1a2","sN":1,"aN":"a2"}'>
+
+        <div  id="footerUniversalFooter" data-m='{"cN":"footerUniversalFooter","cT":"Module_coreui-universalfooter","id":"m1r1a2","sN":1,"aN":"r1a2"}'  data-module-id="Category|footerRegion|footerRegion|footerUniversalFooter|coreui-universalfooter">
+            
+
+
+
+
+<footer id="uhf-footer" class="c-universal-footer context-uhf" data-uhf-greenid="false" data-footer-footprint="/smc/onesite-l0-footer" ms.pgarea='Uhf footer' >
+    <section>
+                <a id="locale-picker-link" class="c-hyperlink c-glyph glyph-world" href="javascript:function smcLanguageSelector() { return undefined; } smcLanguageSelector();" ms.title='locale_picker(IN)'>English (India)</a>
+
+        <ul role="contentinfo" class="c-list f-bare" ms.cmpgrp='Corp links'>
+                            <li>
+                    <a class="c-hyperlink" href="http://go.microsoft.com/fwlink/?LinkID=206977" ms.title='Footer_TermsOfUse'>Terms of use</a>
+                </li>
+                <li>
+                    <a class="c-hyperlink" href="http://go.microsoft.com/fwlink/?LinkID=521839" ms.title='Footer_Privacy&cookies'>Privacy &amp; cookies</a>
+                </li>
+                <li>
+                    <a class="c-hyperlink" href="http://www.microsoft.com/trademarks" ms.title='Footer_Trademarks'>Trademarks</a>
+                </li>
+
+            <li>&#169; Microsoft 2017</li>
+            
+        </ul>
+    </section>
+    
+</footer>
+
+
+
+
+
+<style>
+    .c-modal-link{cursor: pointer;}
+</style>
+        </div>
+            </div>
+
+    </section>
+    </div>
+
+    
+    <div languaugeselector></div>
+
+    
+    <noscript>
+        <img alt="" width="1" height="1" src="https://c.microsoft.com/trans_pixel.aspx">
+    </noscript>
+
+    
+    <div metatags></div>
+
+    
+    <script type="text/javascript">var guid = ("xxxxxxxx-xxxx-4xxx-Rxxx-xxxxxxxxxxxx".replace(/x/g, function () { return Math.floor(Math.random() * 16).toString(16); })).replace("R", (8 | Math.floor(Math.random() * 3)).toString(16)); var m = document.createElement("meta"); m.content = guid; m.name = "ms.dqid"; document.getElementsByTagName("head")[0].appendChild(m);</script>
+    <img style="display:none;" onerror="var m=document.createElement('meta');m.name='ms.dqp0';m.content='true';document.getElementsByTagName('head')[0].appendChild(m);" onload="var m=document.createElement('meta');m.name='ms.dqp0';m.content='false';document.getElementsByTagName('head')[0].appendChild(m);" src="https://c1.microsoft.com/c.gif?" />
+
+    
+    <script type="text/javascript">
+        Asimov.clickstreamTracker.init();
+    </script>
+
+    <script type="text/JavaScript" async>
+        var varAutoFirePV = 0;
+        var varClickTracking = 1;
+        var varCustomerTracking = 1;
+        var Route = "76500";
+        var Ctrl = "";
+        document.write("<script type='text/javascript' src='" + (window.location.protocol) + "//c.microsoft.com/ms.js'><\/script>");
+    </script>
+
+    
+    
+
+
+
+</body>
+
+</html>
